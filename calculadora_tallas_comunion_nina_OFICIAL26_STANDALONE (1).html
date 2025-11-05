@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abuela Tata · Calculadora de tallas — Comunión Niña (Oficial 26)</title>
+<style>
+  :root{
+    --bg: #f7f3ee;
+    --card: #ffffff;
+    --ink: #3a2f2a;
+    --sub: #6b5b53;
+    --brand: #b58a7a;
+    --brand-dark:#8e6a5c;
+    --shadow: 0 8px 26px rgba(0,0,0,.08);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; padding:20px 14px;
+    font-family: ui-serif, Georgia, 'Times New Roman', serif;
+    color:var(--ink);
+    background:
+      radial-gradient(ellipse at top left, #fff8f2 0%, rgba(255,255,255,0) 40%),
+      radial-gradient(ellipse at bottom right, #fff8f2 0%, rgba(255,255,255,0) 35%),
+      var(--bg);
+    line-height:1.28;
+  }
+  .wrap{max-width:1000px; margin:0 auto;}
+  header{text-align:center; margin-bottom:18px;}
+  .logo-title{
+    font-family:'Brush Script MT','Lucida Handwriting','Segoe Script',cursive;
+    font-size: clamp(2rem, 4vw + 1rem, 3.2rem);
+    color:var(--brand);
+    letter-spacing:1px;
+    margin:0;
+  }
+  .subbrand{
+    color:var(--brand-dark);
+    font-size:1.1rem;
+    font-weight:500;
+    letter-spacing:.05em;
+    margin-top:-4px;
+  }
+  hr.decor{
+    border:none;
+    border-top:2px solid #e8dcd5;
+    margin:10px auto 18px;
+    width:60%;
+  }
+  h1{font-size: clamp(1.5rem, 2.4vw + 1rem, 2.2rem); margin:.2rem 0 .4rem;}
+  p.lead{margin:.2rem auto 1rem; max-width:66ch; color:var(--sub);}
+  .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; margin:12px 0; border:1px solid #efe7df;}
+  .grid{display:grid; gap:12px; grid-template-columns: repeat(3, 1fr);}
+  @media (max-width:900px){.grid{grid-template-columns: repeat(2, 1fr);}}
+  @media (max-width:640px){.grid{grid-template-columns: 1fr;}}
+  label{display:block; font-size:.95rem; margin:0 0 6px; color:var(--sub);}
+  input[type="number"]{width:100%; padding:14px 12px; border-radius:12px; border:1px solid #e6dcd3; background:#fff; font-size:1.05rem; outline:none;}
+  input[type="number"]:focus{border-color:var(--brand); box-shadow:0 0 0 3px rgba(181,138,122,.15)}
+  .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+  button{appearance:none; border:none; cursor:pointer; padding:14px 18px; border-radius:14px; font-weight:600; letter-spacing:.02em; box-shadow:var(--shadow);}
+  .primary{ background:var(--brand); color:#fff; }
+  .primary:active{ transform: translateY(1px); background:var(--brand-dark); }
+  .ghost{ background:#fff; color:var(--brand-dark); border:1px solid #eadfd7; }
+  .note{font-size:.9rem; color:var(--sub)}
+  .result{border-left:6px solid var(--brand); padding-left:12px; margin-top:4px;}
+  .result h3{margin:.2rem 0 .4rem}
+  .pill{display:inline-block; padding:.35rem .7rem; border-radius:999px; border:1px solid #e9ded5; background:#fff; font-size:.85rem; margin:.15rem .25rem 0 0; color:var(--sub);}
+  details{background: #fff; border:1px dashed #e6d9cf; border-radius:14px; padding:12px;}
+  details > summary {cursor:pointer; font-weight:700; color:var(--brand-dark);}
+  table{width:100%; border-collapse:collapse; margin-top:8px; font-size:.94rem}
+  th, td{padding:10px 8px; border-bottom:1px solid #f0e7df; text-align:left; white-space:nowrap;}
+  th{position:sticky; top:0; background:#fff; z-index:1}
+  .muted{color:#97887f}
+  .badge{display:inline-flex; align-items:center; gap:6px; padding:.25rem .6rem; border-radius:999px; background:#f4ede7; color:#6c584a; font-weight:600; font-size:.9rem; border:1px solid #eadfd7;}
+  .tips{font-size:.88rem; color:#7a6a61; margin-top:6px}
+  footer{margin:18px 0 6px; text-align:center; color:#9a8a80; font-size:.85rem}
+  .req::after{content:" *"; color:var(--brand-dark);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h2 class="logo-title">Abuela&nbsp;Tata</h2>
+      <div class="subbrand">Colección Comunión&nbsp;26</div>
+      <hr class="decor" />
+      <h1>Calculadora de tallas — <em>Niña</em> (oficial)</h1>
+      <p class="lead">Rellena las <strong>medidas de la niña</strong>. La app compara con la tabla oficial de <em>prenda terminada</em> y sugiere talla. <span class="muted">Diademas, tocados y tiaras: talla única.</span></p>
+    </header>
+
+    <section class="card">
+      <div class="badge">Entrada de medidas</div>
+      <p class="note">Obligatorios: <strong class="req">Pecho</strong> y <strong class="req">Cintura</strong>. El resto ayuda a afinar.</p>
+      <div class="grid">
+        <div>
+          <label for="pecho" class="req">Contorno de pecho (cm)</label>
+          <input id="pecho" type="number" inputmode="decimal" min="40" max="120" placeholder="Ej.: 68" />
+        </div>
+        <div>
+          <label for="cintura" class="req">Contorno de cintura (cm)</label>
+          <input id="cintura" type="number" inputmode="decimal" min="40" max="120" placeholder="Ej.: 60" />
+        </div>
+        <div>
+          <label for="talle">Talle (hombro → cintura) (cm)</label>
+          <input id="talle" type="number" inputmode="decimal" min="20" max="60" placeholder="Ej.: 29" />
+        </div>
+        <div>
+          <label for="espalda">Espalda (cm)</label>
+          <input id="espalda" type="number" inputmode="decimal" min="20" max="45" placeholder="Ej.: 31" />
+        </div>
+        <div>
+          <label for="cont_manga">Contorno de manga (cm)</label>
+          <input id="cont_manga" type="number" inputmode="decimal" min="15" max="40" placeholder="Ej.: 26.5" />
+        </div>
+        <div>
+          <label for="altura">Altura de la niña (cm) <span class="muted">(opcional)</span></label>
+          <input id="altura" type="number" inputmode="decimal" min="80" max="190" placeholder="Ej.: 136" />
+        </div>
+        <div>
+          <label for="largo_falda">Largo de falda deseado (cm) <span class="muted">(opcional)</span></label>
+          <input id="largo_falda" type="number" inputmode="decimal" min="40" max="140" placeholder="Ej.: 97" />
+        </div>
+        <div>
+          <label for="largo_total">Largo total deseado (cm) <span class="muted">(opcional)</span></label>
+          <input id="largo_total" type="number" inputmode="decimal" min="80" max="180" placeholder="Ej.: 126" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="calcular">Calcular talla</button>
+        <button class="ghost" id="limpiar">Limpiar</button>
+      </div>
+
+      <div id="resultado" class="result" style="display:none">
+        <h3>Resultado</h3>
+        <div id="sugerencia"></div>
+        <div class="tips" id="tips"></div>
+        <div class="pill">Vestido</div>
+        <div class="pill">Diademas/Tocados/Tiaras: talla única</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <details open>
+        <summary>Ver tabla oficial de tallas (prenda terminada)</summary>
+        <p class="note">Medidas de prenda terminada. El <strong>contorno de manga</strong> se mide a 2&nbsp;cm por debajo de la sisa. Fuente: tabla oficial Comunión 26 (sep-2025).</p>
+        <div style="max-height:340px; overflow:auto; border:1px solid #efe7df; border-radius:12px;">
+          <table id="tabla-ref">
+            <thead>
+              <tr>
+                <th>Talla</th>
+                <th>Pecho</th>
+                <th>Cintura</th>
+                <th>Talle</th>
+                <th>Espalda</th>
+                <th>Cont. Manga</th>
+                <th>L. Falda</th>
+                <th>L. Total</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="muted">Puede variar según diseño y tejidos.</p>
+      </details>
+    </section>
+
+    <footer>
+      © Abuela Tata · Comunión 26 — Tabla oficial. Herramienta interna B2B.
+    </footer>
+  </div>
+
+<script>
+// ====================== TABLA OFICIAL ======================
+window.TABLA_TALLAS = [
+  { talla: "6",  pecho: 66, cintura: 64, talle: 26,  espalda: 27,  cont_manga: 23.5, l_falda: 87,   l_total: 113 },
+  { talla: "7",  pecho: 68, cintura: 66, talle: 27,  espalda: 28,  cont_manga: 24.5, l_falda: 90,   l_total: 117 },
+  { talla: "8",  pecho: 70, cintura: 68, talle: 28,  espalda: 28.5,cont_manga: 25,   l_falda: 93.5, l_total: 121 },
+  { talla: "9",  pecho: 72, cintura: 70, talle: 28,  espalda: 29,  cont_manga: 25.5, l_falda: 95,   l_total: 123 },
+  { talla: "10", pecho: 74, cintura: 72, talle: 29,  espalda: 30,  cont_manga: 26,   l_falda: 97,   l_total: 126 },
+  { talla: "11", pecho: 76, cintura: 74, talle: 29,  espalda: 31,  cont_manga: 26.5, l_falda: 102,  l_total: 131 },
+  { talla: "12", pecho: 78, cintura: 76, talle: 30,  espalda: 31.5,cont_manga: 27,   l_falda: 106,  l_total: 136 },
+  { talla: "13", pecho: 80, cintura: 78, talle: 30,  espalda: 32,  cont_manga: 27.5, l_falda: 111,  l_total: 141 },
+  { talla: "14", pecho: 82, cintura: 80, talle: 31,  espalda: 33,  cont_manga: 28,   l_falda: 115,  l_total: 146 },
+  { talla: "15", pecho: 84, cintura: 82, talle: 31,  espalda: 34,  cont_manga: 28.5, l_falda: 120,  l_total: 151 },
+  { talla: "16", pecho: 86, cintura: 84, talle: 31,  espalda: 35,  cont_manga: 29,   l_falda: 120,  l_total: 151 }
+];
+
+// ====================== ALGORITMO ======================
+function poblarTabla(){
+  const tb = document.querySelector('#tabla-ref tbody');
+  tb.innerHTML = '';
+  window.TABLA_TALLAS.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${row.talla}</td>
+      <td>${row.pecho}</td>
+      <td>${row.cintura}</td>
+      <td>${row.talle}</td>
+      <td>${row.espalda}</td>
+      <td>${row.cont_manga}</td>
+      <td>${row.l_falda}</td>
+      <td>${row.l_total}</td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function val(n){ return Number.isFinite(n) ? n : null; }
+
+function formValues(){
+  const pecho = val(parseFloat(document.getElementById('pecho').value));
+  const cintura = val(parseFloat(document.getElementById('cintura').value));
+  const talle = val(parseFloat(document.getElementById('talle').value));
+  const espalda = val(parseFloat(document.getElementById('espalda').value));
+  const cont_manga = val(parseFloat(document.getElementById('cont_manga').value));
+  const altura = val(parseFloat(document.getElementById('altura').value));
+  const largo_falda = val(parseFloat(document.getElementById('largo_falda').value));
+  const largo_total = val(parseFloat(document.getElementById('largo_total').value));
+  return {pecho, cintura, talle, espalda, cont_manga, altura, largo_falda, largo_total};
+}
+
+function validar(vals){
+  const faltan = [];
+  if(vals.pecho === null)   faltan.push('Pecho');
+  if(vals.cintura === null) faltan.push('Cintura');
+  return faltan;
+}
+
+// Score usando SOLO campos introducidos (entre pecho, cintura, talle, espalda, cont_manga).
+function calcScore(vals, ref){
+  const campos = ['pecho','cintura','talle','espalda','cont_manga'];
+  const usados = campos.filter(c => vals[c] !== null);
+  const peso = usados.length ? 1 / usados.length : 0;
+  let score = 0;
+  const difs = {};
+  usados.forEach(c => {
+    const d = Math.abs(vals[c] - ref[c]);
+    score += d * peso;
+    difs[c] = d;
+  });
+  return {score, difs, usados};
+}
+
+function calcular(){
+  const vals = formValues();
+  const faltan = validar(vals);
+  const $res = document.getElementById('resultado');
+  const $sug = document.getElementById('sugerencia');
+  const $tips = document.getElementById('tips');
+
+  if(faltan.length){
+    $res.style.display = 'block';
+    $sug.innerHTML = '<span style="color:var(--brand-dark)">Faltan campos: ' + faltan.join(', ') + '.</span>';
+    $tips.textContent = 'Rellena los campos obligatorios para calcular.';
+    return;
+  }
+
+  const evaluadas = window.TABLA_TALLAS.map(ref => {
+    const {score, difs, usados} = calcScore(vals, ref);
+    return {...ref, score, difs, usados};
+  }).sort((a,b) => a.score - b.score);
+
+  const best = evaluadas[0];
+  const second = evaluadas[1];
+
+  // Mensaje principal
+  let html = `Talla sugerida: <strong>${best.talla} años</strong>`;
+  // Resumen de diferencias
+  const difParts = [];
+  for(const k of best.usados){
+    difParts.push(`${labelOf(k)}: ${best.difs[k].toFixed(1)} cm`);
+  }
+  html += `<div class="muted" style="margin-top:.35rem">Diferencias vs. prenda — ${difParts.join(' · ')}</div>`;
+
+  // Alternativa cercana
+  if(second && (second.score - best.score) <= 1.0){
+    html += `<div style="margin-top:.5rem">Alternativa cercana: <strong>${second.talla} años</strong> (si prefieres más/menos holgura).</div>`;
+  }
+
+  // Consejos de largo
+  const tips = [];
+  if(vals.altura !== null){
+    tips.push(`Recuerda validar el <em>largo total</em> en prueba. Talla ${best.talla}: ${best.l_total} cm.`);
+  }
+  if(vals.largo_falda !== null){
+    const df = Math.abs(vals.largo_falda - best.l_falda);
+    if(df > 4){ tips.push(`El largo de falda deseado difiere en ~${df.toFixed(1)} cm respecto a talla ${best.talla}. Ajustar bajo en taller.`); }
+  }
+  if(vals.largo_total !== null){
+    const dt = Math.abs(vals.largo_total - best.l_total);
+    if(dt > 4){ tips.push(`El largo total deseado difiere en ~${dt.toFixed(1)} cm respecto a talla ${best.talla}. Valorar ajustes.`); }
+  }
+
+  $res.style.display = 'block';
+  $sug.innerHTML = html;
+  $tips.textContent = tips.join(' ');
+}
+
+function labelOf(k){
+  switch(k){
+    case 'pecho': return 'Pecho';
+    case 'cintura': return 'Cintura';
+    case 'talle': return 'Talle';
+    case 'espalda': return 'Espalda';
+    case 'cont_manga': return 'Cont. Manga';
+    default: return k;
+  }
+}
+
+function limpiar(){
+  ['pecho','cintura','talle','espalda','cont_manga','altura','largo_falda','largo_total'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('resultado').style.display = 'none';
+}
+
+document.getElementById('calcular').addEventListener('click', calcular);
+document.getElementById('limpiar').addEventListener('click', limpiar);
+poblarTabla();
+</script>
+</body>
+</html>
